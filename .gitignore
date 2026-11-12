@@ -1,0 +1,18 @@
+# Dossiers générés par la compilation
+bin/
+obj/
+
+# Réglages locaux de Visual Studio
+.vs/
+*.user
+*.suo
+
+# Packages et résultats de tests
+packages/
+TestResults/
+
+# Fichiers d'export du SCADA
+*.xlsx
+
+# Configuration locale avec le mot de passe PostgreSQL (le modèle appsettings.example.json, lui, est suivi)
+**/appsettings.json
