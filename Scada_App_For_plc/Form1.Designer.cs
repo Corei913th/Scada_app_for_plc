@@ -114,9 +114,9 @@ namespace Scada_App_For_plc
             btnHistorique.Text = "Historique";
             btnHistorique.UseVisualStyleBackColor = false;
             btnHistorique.Click += BtnHistorique_Click;
-            // 
+            //
             // btnInfo
-            // 
+            //
             btnInfo.BackColor = Color.FromArgb(52, 66, 94);
             btnInfo.FlatAppearance.BorderSize = 0;
             btnInfo.FlatStyle = FlatStyle.Flat;
@@ -178,9 +178,9 @@ namespace Scada_App_For_plc
             historiqueView1.Name = "historiqueView1";
             historiqueView1.Size = new Size(1000, 548);
             historiqueView1.TabIndex = 2;
-            // 
+            //
             // infoView1
-            // 
+            //
             infoView1.Dock = DockStyle.Fill;
             infoView1.Location = new Point(0, 0);
             infoView1.Name = "infoView1";

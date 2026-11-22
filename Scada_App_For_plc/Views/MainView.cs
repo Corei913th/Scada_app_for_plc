@@ -23,6 +23,11 @@ public partial class MainView : ViewBase
             {
                 if (IsReady) _ = SafeAsync(() => Svc.Plc.SetMotorAsync(index, dir));
             };
+            // Consigne de vitesse réglée directement depuis la carte du moteur (plus besoin d'aller sur Paramètres).
+            _motors[i].SetpointRequested += value =>
+            {
+                if (IsReady) _ = SafeAsync(() => Svc.Plc.WriteSetpointAsync(index, value));
+            };
         }
     }
 
