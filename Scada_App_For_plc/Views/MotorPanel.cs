@@ -9,6 +9,9 @@ public partial class MotorPanel : UserControl
     /// <summary>Levé quand l'opérateur clique Avant / Arrière / Arrêt ; MainView transmet la demande à l'automate.</summary>
     public event Action<MotorDirection>? DirectionRequested;
 
+    /// <summary>Levé quand l'opérateur clique « Régler » avec une nouvelle consigne de vitesse.</summary>
+    public event Action<int>? SetpointRequested;
+
     public MotorPanel()
     {
         InitializeComponent();
@@ -65,6 +68,8 @@ public partial class MotorPanel : UserControl
         btnForward.Enabled = enabled;
         btnBackward.Enabled = enabled;
         btnStop.Enabled = enabled;
+        numSetpoint.Enabled = enabled;
+        btnSetSpeed.Enabled = enabled;
     }
 
     private void BtnForward_Click(object? sender, EventArgs e) => DirectionRequested?.Invoke(MotorDirection.Forward);
@@ -72,4 +77,6 @@ public partial class MotorPanel : UserControl
     private void BtnBackward_Click(object? sender, EventArgs e) => DirectionRequested?.Invoke(MotorDirection.Backward);
 
     private void BtnStop_Click(object? sender, EventArgs e) => DirectionRequested?.Invoke(MotorDirection.Stopped);
+
+    private void BtnSetSpeed_Click(object? sender, EventArgs e) => SetpointRequested?.Invoke((int)numSetpoint.Value);
 }

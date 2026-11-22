@@ -74,7 +74,7 @@ namespace Scada_App_For_plc.Views
             //
             motorPanel1.Location = new Point(24, 96);
             motorPanel1.Name = "motorPanel1";
-            motorPanel1.Size = new Size(380, 140);
+            motorPanel1.Size = new Size(380, 178);
             motorPanel1.TabIndex = 3;
             motorPanel1.Title = "Moteur 1";
             //
@@ -82,15 +82,15 @@ namespace Scada_App_For_plc.Views
             //
             motorPanel2.Location = new Point(420, 96);
             motorPanel2.Name = "motorPanel2";
-            motorPanel2.Size = new Size(380, 140);
+            motorPanel2.Size = new Size(380, 178);
             motorPanel2.TabIndex = 4;
             motorPanel2.Title = "Moteur 2";
             //
             // motorPanel3
             //
-            motorPanel3.Location = new Point(24, 252);
+            motorPanel3.Location = new Point(24, 290);
             motorPanel3.Name = "motorPanel3";
-            motorPanel3.Size = new Size(380, 140);
+            motorPanel3.Size = new Size(380, 178);
             motorPanel3.TabIndex = 5;
             motorPanel3.Title = "Moteur 3";
             //
@@ -119,7 +119,7 @@ namespace Scada_App_For_plc.Views
             Controls.Add(motorPanel3);
             Controls.Add(lblMessage);
             Name = "MainView";
-            Size = new Size(720, 422);
+            Size = new Size(820, 480);
             VisibleChanged += MainView_VisibleChanged;
             ResumeLayout(false);
             PerformLayout();

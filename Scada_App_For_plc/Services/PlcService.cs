@@ -218,6 +218,15 @@ public sealed class PlcService : IDisposable
             return 0;
         });
 
+    /// <summary>Écrit la consigne d'un seul moteur (FC06), sans toucher aux deux autres.</summary>
+    public Task WriteSetpointAsync(int motor, int value) =>
+        RunAsync(async m =>
+        {
+            var v = (ushort)Math.Clamp(value, 0, ushort.MaxValue);
+            await m.WriteSingleRegisterAsync(_s.UnitId, Reg(_s.SetpointStart + motor), v);
+            return 0;
+        });
+
     // ------------------------------------------------------------------ interne
 
     /// <summary>

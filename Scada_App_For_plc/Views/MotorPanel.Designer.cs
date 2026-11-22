@@ -32,7 +32,10 @@ namespace Scada_App_For_plc.Views
             btnForward = new Button();
             btnBackward = new Button();
             btnStop = new Button();
+            numSetpoint = new NumericUpDown();
+            btnSetSpeed = new Button();
             grpMotor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numSetpoint).BeginInit();
             SuspendLayout();
             //
             // grpMotor
@@ -44,10 +47,12 @@ namespace Scada_App_For_plc.Views
             grpMotor.Controls.Add(btnForward);
             grpMotor.Controls.Add(btnBackward);
             grpMotor.Controls.Add(btnStop);
+            grpMotor.Controls.Add(numSetpoint);
+            grpMotor.Controls.Add(btnSetSpeed);
             grpMotor.Dock = DockStyle.Fill;
             grpMotor.Location = new Point(0, 0);
             grpMotor.Name = "grpMotor";
-            grpMotor.Size = new Size(380, 140);
+            grpMotor.Size = new Size(380, 178);
             grpMotor.TabIndex = 0;
             grpMotor.TabStop = false;
             grpMotor.Text = "Moteur";
@@ -120,13 +125,34 @@ namespace Scada_App_For_plc.Views
             btnStop.UseVisualStyleBackColor = true;
             btnStop.Click += BtnStop_Click;
             //
+            // numSetpoint
+            //
+            numSetpoint.Enabled = false;
+            numSetpoint.Location = new Point(16, 134);
+            numSetpoint.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
+            numSetpoint.Name = "numSetpoint";
+            numSetpoint.Size = new Size(110, 23);
+            numSetpoint.TabIndex = 7;
+            //
+            // btnSetSpeed
+            //
+            btnSetSpeed.Enabled = false;
+            btnSetSpeed.Location = new Point(132, 133);
+            btnSetSpeed.Name = "btnSetSpeed";
+            btnSetSpeed.Size = new Size(110, 25);
+            btnSetSpeed.TabIndex = 8;
+            btnSetSpeed.Text = "Régler la vitesse";
+            btnSetSpeed.UseVisualStyleBackColor = true;
+            btnSetSpeed.Click += BtnSetSpeed_Click;
+            //
             // MotorPanel
             //
             Controls.Add(grpMotor);
             Name = "MotorPanel";
-            Size = new Size(380, 140);
+            Size = new Size(380, 178);
             grpMotor.ResumeLayout(false);
             grpMotor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numSetpoint).EndInit();
             ResumeLayout(false);
         }
 
@@ -140,5 +166,7 @@ namespace Scada_App_For_plc.Views
         private Button btnForward;
         private Button btnBackward;
         private Button btnStop;
+        private NumericUpDown numSetpoint;
+        private Button btnSetSpeed;
     }
 }

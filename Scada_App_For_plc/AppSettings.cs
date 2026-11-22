@@ -62,8 +62,9 @@ public sealed class AppSettings
     public DatabaseSettings Database { get; set; } = new();
 
     /// <summary>
-    /// Lit appsettings.json (copié à côté de l'exécutable). Si le fichier est absent,
-    /// les valeurs par défaut ci-dessus sont utilisées.
+    /// Lit appsettings.json (copié à côté de l'exécutable). Si le fichier est absent ou invalide,
+    /// les valeurs par défaut ci-dessus sont utilisées ; un fichier invalide affiche un message
+    /// d'anomalie plutôt que de faire planter l'application au démarrage.
     /// </summary>
     public static AppSettings Load()
     {
@@ -77,6 +78,18 @@ public sealed class AppSettings
             ReadCommentHandling = JsonCommentHandling.Skip,   // autorise les // commentaires dans le JSON
             AllowTrailingCommas = true
         };
-        return JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path), options) ?? new AppSettings();
+        try
+        {
+            return JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path), options) ?? new AppSettings();
+        }
+        catch (Exception ex) when (ex is JsonException or IOException)
+        {
+            MessageBox.Show(
+                $"appsettings.json est invalide ({ex.Message}).\nLes valeurs par défaut sont utilisées.",
+                "Configuration invalide",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning);
+            return new AppSettings();
+        }
     }
 }

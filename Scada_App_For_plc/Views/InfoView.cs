@@ -17,14 +17,13 @@ public partial class InfoView : ViewBase
         var db = new NpgsqlConnectionStringBuilder(Svc.Settings.Database.ConnectionString);
 
         lblInfo.Text =
-            "SCADA pour automate Delta — projet de cours EADL-1\n" +
+            "SCADA pour automate Delta\n" +
             "Supervision et pilotage par Modbus TCP, archivage PostgreSQL, export Excel.\n\n" +
             $"Automate : {p.Ip}:{p.Port} (unité {p.UnitId})\n" +
             // Numéros de relais M tels qu'écrits dans le Ladder (l'offset Modbus n'intervient pas ici).
             "Commandes moteurs : M0..M5   (avant = M0/M2/M4, arrière = M1/M3/M5)\n" +
             $"Marche machine : M{p.StartCoil}\n" +
-            $"Consignes : D{p.SetpointStart}..D{p.SetpointStart + 2}   Mesures : D{p.FeedbackStart}..D{p.FeedbackStart + 2}\n\n" +
-            $"Base : {db.Host}:{db.Port} / {db.Database} (utilisateur {db.Username})\n\n" +
-            "Les adresses se règlent dans appsettings.json.";
+            $"Consignes : D{p.SetpointStart}..D{p.SetpointStart + 2}   Mesures : D{p.FeedbackStart}..D{p.FeedbackStart + 2}\n\n";
+ 
     }
 }
